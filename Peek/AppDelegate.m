@@ -7,15 +7,27 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    [NSThread sleepForTimeInterval:1];
+    
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
+    NSString *applicationId = [dictionary objectForKey:@"parseApplicationId"];
+    NSString *clientKey = [dictionary objectForKey:@"parseClientKey"];
+    NSLog(@" App id: %@", applicationId);
+    NSLog(@"Client Key: %@", clientKey);
+    //add your parse keys here
+    [Parse setApplicationId:applicationId
+                  clientKey:clientKey];
+    
+//    [Parse setApplicationId:@"HNH8hU7G3Ok2Wd3DDN497J1IwwYPT3Waon9v1PB9"
+//                  clientKey:@"3QorkrOootDlklE3a5gejLwARYkezBwnrOxEBNdE"];
+    
+    [self customizeUserInterface];
     return YES;
 }
 
@@ -45,5 +57,33 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - Helper methods
+
+-(void)customizeUserInterface
+{
+    // Nav bar customization
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navBarBackground"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    // Tab bar customization
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    
+    // Set root view controller
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UITabBar *tabBar = tabBarController.tabBar;
+    
+    UITabBarItem *tabInbox = [tabBar.items objectAtIndex:0];
+    UITabBarItem *tabFriends = [tabBar.items objectAtIndex:1];
+    UITabBarItem *tabCamera = [tabBar.items objectAtIndex:2];
+    
+    (void) [tabInbox initWithTitle:(NSString *)@"Inbox" image:[UIImage imageNamed:@"inbox"] selectedImage:[UIImage imageNamed:@"inbox"]];
+    (void) [tabFriends initWithTitle:(NSString *)@"Friends" image:[UIImage imageNamed:@"friends"] selectedImage:[UIImage imageNamed:@"friends"]];
+    (void) [tabCamera initWithTitle:(NSString *)@"Camera" image:[UIImage imageNamed:@"camera"] selectedImage:[UIImage imageNamed:@"camera"]];
+    
+    tabBar.tintColor = [UIColor whiteColor];
+}
+
 
 @end
