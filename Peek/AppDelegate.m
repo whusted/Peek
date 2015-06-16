@@ -18,8 +18,6 @@
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
     NSString *applicationId = [dictionary objectForKey:@"parseApplicationId"];
     NSString *clientKey = [dictionary objectForKey:@"parseClientKey"];
-    NSLog(@" App id: %@", applicationId);
-    NSLog(@"Client Key: %@", clientKey);
     [Parse setApplicationId:applicationId
                   clientKey:clientKey];
     
@@ -71,12 +69,12 @@
     UITabBar *tabBar = tabBarController.tabBar;
     
     UITabBarItem *tabInbox = [tabBar.items objectAtIndex:0];
-    UITabBarItem *tabFriends = [tabBar.items objectAtIndex:1];
-    UITabBarItem *tabCamera = [tabBar.items objectAtIndex:2];
+    UITabBarItem *tabCamera = [tabBar.items objectAtIndex:1];
+    UITabBarItem *tabFriends = [tabBar.items objectAtIndex:2];
     
     (void) [tabInbox initWithTitle:(NSString *)@"Inbox" image:[UIImage imageNamed:@"inbox"] selectedImage:[UIImage imageNamed:@"inbox"]];
-    (void) [tabFriends initWithTitle:(NSString *)@"Friends" image:[UIImage imageNamed:@"friends"] selectedImage:[UIImage imageNamed:@"friends"]];
     (void) [tabCamera initWithTitle:(NSString *)@"Camera" image:[UIImage imageNamed:@"camera"] selectedImage:[UIImage imageNamed:@"camera"]];
+    (void) [tabFriends initWithTitle:(NSString *)@"Friends" image:[UIImage imageNamed:@"friends"] selectedImage:[UIImage imageNamed:@"friends"]];
     
     tabBar.tintColor = [UIColor whiteColor];
 }
