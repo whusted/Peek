@@ -20,12 +20,6 @@
 {
     [super viewDidLoad];
     
-    self.longPress = [[UILongPressGestureRecognizer alloc]
-                                               initWithTarget:self
-                                               action:@selector(handleLongPress:)];
-    
-    [[self view] addGestureRecognizer:self.longPress];
-    
     self.moviePlayer = [[MPMoviePlayerController alloc] init];
     
     
@@ -41,14 +35,12 @@
     
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
-        NSLog(@"Current user: %@", currentUser.username);
         PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
         [query whereKey:@"recipientIds" equalTo:[[PFUser currentUser] objectId]];
         [self retrieveMessages];
     }
     else {
         [self performSegueWithIdentifier:@"showLogin" sender:self];
-        NSLog(@"user not logged in");
     }
     
     [self.navigationController.navigationBar setHidden:NO];
@@ -93,17 +85,14 @@
     
     // Self destruct
     NSMutableArray *recipientIds = [NSMutableArray arrayWithArray:[self.selectedMessage objectForKey:@"recipientIds"]];
-    NSLog(@"Recipients: %@", recipientIds);
     
     if ([recipientIds count] == 1) {
-        // Last recipient - delete it
         [self.selectedMessage deleteInBackground];
     } else {
-        // Remove the current recipient - don't delete
+        // Remove the current recipient from list but don't delete
         [recipientIds removeObject:[[PFUser currentUser] objectId]];
         [self.selectedMessage setObject:recipientIds forKey:@"recipientIds"];
         [self.selectedMessage saveInBackground];
-        
     }
     
 }
@@ -146,20 +135,6 @@
 
 #pragma mark - Helper methods
 
--(BOOL)handleLongPress:(UILongPressGestureRecognizer*)sender {
-    if (sender.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"UIGestureRecognizerStateEnded");
-        return YES;
-        //Do Whatever You want on End of Gesture
-    }
-    else if (sender.state == UIGestureRecognizerStateBegan){
-        NSLog(@"UIGestureRecognizerStateBegan.");
-        return NO;
-        //Do Whatever You want on Began of Gesture
-    }
-    return NO;
-}
-
 - (void)retrieveMessages
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
@@ -169,7 +144,6 @@
         if (error) {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         } else {
-            // We have messages
             self.messages = objects;
             [self.tableView reloadData];
             NSLog(@"Retrieved %d messages", [self.messages count]);

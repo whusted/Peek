@@ -120,17 +120,15 @@ UIColor *disclosureColor;
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        // A photo was taken/selected
+        // photo
         self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
         if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-            //new picture -> save it
             UIImageWriteToSavedPhotosAlbum(self.image, nil, nil, nil);
         }
     } else {
-        // A video was taken
+        // video
         self.videoFilePath = (NSString *)[[info objectForKey:UIImagePickerControllerMediaURL] path];
         if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-            // new video -> save it
             if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(self.videoFilePath)) {
                 UISaveVideoAtPathToSavedPhotosAlbum(self.videoFilePath, nil, nil, nil);
             }
@@ -147,7 +145,6 @@ UIColor *disclosureColor;
 }
 
 - (void)reset {
-    NSLog(@"Resetting");
     self.image = nil;
     self.videoFilePath = nil;
     [self.recipients removeAllObjects];
@@ -161,6 +158,7 @@ UIColor *disclosureColor;
     } else {
         [self uploadMessage];
         [self.tabBarController setSelectedIndex:0];
+        [self reset];
     }
 }
 
@@ -186,7 +184,6 @@ UIColor *disclosureColor;
         fileName = @"video.mov";
         fileType = @"video";
     }
-    
     PFFile *file = [PFFile fileWithName:fileName data:fileData];
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
