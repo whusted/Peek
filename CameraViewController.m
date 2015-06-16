@@ -147,6 +147,7 @@ UIColor *disclosureColor;
 }
 
 - (void)reset {
+    NSLog(@"Resetting");
     self.image = nil;
     self.videoFilePath = nil;
     [self.recipients removeAllObjects];
@@ -165,8 +166,7 @@ UIColor *disclosureColor;
 
 #pragma mark - Helper methods
 
-- (void)uploadMessage
-{
+- (void)uploadMessage {
     NSData *fileData;
     NSString *fileName;
     NSString *fileType;
@@ -204,7 +204,6 @@ UIColor *disclosureColor;
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An error occurred" message:@"Please try sending your message again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alertView show];
                 } else {
-                    // Cool, everything worked :)
                     [self reset];
                 }
             }];
