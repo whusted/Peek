@@ -158,7 +158,6 @@ UIColor *disclosureColor;
     } else {
         [self uploadMessage];
         [self.tabBarController setSelectedIndex:0];
-        [self reset];
     }
 }
 

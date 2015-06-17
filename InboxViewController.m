@@ -146,7 +146,6 @@
         } else {
             self.messages = objects;
             [self.tableView reloadData];
-            NSLog(@"Retrieved %d messages", [self.messages count]);
         }
         
         if ([self.refreshControl isRefreshing]) {
