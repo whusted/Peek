@@ -9,6 +9,7 @@
 #import "CameraViewController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "MSCellAccessory.h"
+#import "DZNPhotoPickerController.h"
 
 @interface CameraViewController ()
 
@@ -45,19 +46,12 @@ UIColor *disclosureColor;
     }];
     
     if (self.image == nil && [self.videoFilePath length] == 0) {
-        self.imagePicker = [[UIImagePickerController alloc] init];
-        self.imagePicker.delegate = self;
-        self.imagePicker.allowsEditing = NO;
-        self.imagePicker.videoMaximumDuration = 10;
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.delegate = self;
         
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            
-        } else {
-            self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }
-        self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
-        [self presentViewController:self.imagePicker animated:NO completion:nil];
+        [self presentViewController:picker animated:NO completion:NULL];
     }
 }
 
@@ -115,8 +109,7 @@ UIColor *disclosureColor;
     [self.tabBarController setSelectedIndex:0];
 }
 
-- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		135EB12A1B3A198A00B647C5 /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 135EB1291B3A198900B647C5 /* FBMissingSymbols.m */; };
 		137050A2194530060010C481 /* EditFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 137050A1194530060010C481 /* EditFriendsViewController.m */; };
 		137050A519457CDA0010C481 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 137050A419457CDA0010C481 /* FriendsViewController.m */; };
 		137050A8194632E90010C481 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 137050A7194632E90010C481 /* CameraViewController.m */; };
@@ -31,7 +32,6 @@
 		13F454FA193EE803000ABF27 /* PeekTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F454F9193EE803000ABF27 /* PeekTests.m */; };
 		13F45504193EE866000ABF27 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13F45503193EE866000ABF27 /* MainStoryboard.storyboard */; };
 		13F45517193EEDE6000ABF27 /* InboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F45516193EEDE6000ABF27 /* InboxViewController.m */; };
-		13F45519193EF4B2000ABF27 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F45518193EF4B2000ABF27 /* Parse.framework */; };
 		13F45523193EF536000ABF27 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F4551A193EF535000ABF27 /* AudioToolbox.framework */; };
 		13F45524193EF536000ABF27 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F4551B193EF535000ABF27 /* CFNetwork.framework */; };
 		13F45525193EF536000ABF27 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F4551C193EF535000ABF27 /* CoreLocation.framework */; };
@@ -43,6 +43,7 @@
 		13F4552B193EF536000ABF27 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F45522193EF536000ABF27 /* SystemConfiguration.framework */; };
 		13F4552E193EF6AB000ABF27 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F4552D193EF6AB000ABF27 /* LoginViewController.m */; };
 		13F45531193EF6BE000ABF27 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F45530193EF6BE000ABF27 /* SignupViewController.m */; };
+		A111C48007DFB1F5D7056A76 /* libPods-Peek.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8B71EC09D7EBA472D6E605 /* libPods-Peek.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		135EB1291B3A198900B647C5 /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMissingSymbols.m; sourceTree = SOURCE_ROOT; };
+		135EB12B1B3A1B8C00B647C5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		137050A0194530060010C481 /* EditFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditFriendsViewController.h; path = ../EditFriendsViewController.h; sourceTree = "<group>"; };
 		137050A1194530060010C481 /* EditFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditFriendsViewController.m; path = ../EditFriendsViewController.m; sourceTree = "<group>"; };
 		137050A319457CDA0010C481 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendsViewController.h; path = ../FriendsViewController.h; sourceTree = "<group>"; };
@@ -107,6 +110,9 @@
 		13F4552D193EF6AB000ABF27 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		13F4552F193EF6BE000ABF27 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ../SignupViewController.h; sourceTree = "<group>"; };
 		13F45530193EF6BE000ABF27 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ../SignupViewController.m; sourceTree = "<group>"; };
+		71AA7C4BC955E3A529719D5D /* Pods-Peek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Peek/Pods-Peek.release.xcconfig"; sourceTree = "<group>"; };
+		9BDB820FBC39F1B300626172 /* Pods-Peek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peek.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Peek/Pods-Peek.debug.xcconfig"; sourceTree = "<group>"; };
+		BF8B71EC09D7EBA472D6E605 /* libPods-Peek.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Peek.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +132,8 @@
 				13F4552B193EF536000ABF27 /* SystemConfiguration.framework in Frameworks */,
 				13F454D7193EE803000ABF27 /* CoreGraphics.framework in Frameworks */,
 				13F454D9193EE803000ABF27 /* UIKit.framework in Frameworks */,
-				13F45519193EF4B2000ABF27 /* Parse.framework in Frameworks */,
 				13F454D5193EE803000ABF27 /* Foundation.framework in Frameworks */,
+				A111C48007DFB1F5D7056A76 /* libPods-Peek.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +169,7 @@
 				13F454F3193EE803000ABF27 /* PeekTests */,
 				13F454D3193EE803000ABF27 /* Frameworks */,
 				13F454D2193EE803000ABF27 /* Products */,
+				210A7334AD7CFEE244AC4815 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +185,7 @@
 		13F454D3193EE803000ABF27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				135EB12B1B3A1B8C00B647C5 /* Social.framework */,
 				137050B41948306D0010C481 /* MediaPlayer.framework */,
 				13F4551A193EF535000ABF27 /* AudioToolbox.framework */,
 				13F4551B193EF535000ABF27 /* CFNetwork.framework */,
@@ -193,6 +201,7 @@
 				13F454D6193EE803000ABF27 /* CoreGraphics.framework */,
 				13F454D8193EE803000ABF27 /* UIKit.framework */,
 				13F454ED193EE803000ABF27 /* XCTest.framework */,
+				BF8B71EC09D7EBA472D6E605 /* libPods-Peek.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,6 +232,7 @@
 				13F454DB193EE803000ABF27 /* Supporting Files */,
 				137050D7194B7AC50010C481 /* TPKeyboardAvoidingScrollView.h */,
 				137050D6194B7AC50010C481 /* TPKeyboardAvoidingScrollView.m */,
+				135EB1291B3A198900B647C5 /* FBMissingSymbols.m */,
 			);
 			path = Peek;
 			sourceTree = "<group>";
@@ -257,6 +267,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		210A7334AD7CFEE244AC4815 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9BDB820FBC39F1B300626172 /* Pods-Peek.debug.xcconfig */,
+				71AA7C4BC955E3A529719D5D /* Pods-Peek.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -264,9 +283,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13F454FD193EE803000ABF27 /* Build configuration list for PBXNativeTarget "Peek" */;
 			buildPhases = (
+				B4BD89744E7C0806EAF8F382 /* Check Pods Manifest.lock */,
 				13F454CD193EE803000ABF27 /* Sources */,
 				13F454CE193EE803000ABF27 /* Frameworks */,
 				13F454CF193EE803000ABF27 /* Resources */,
+				44569409AD1A1285DFC76962 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -352,6 +373,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		44569409AD1A1285DFC76962 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Peek/Pods-Peek-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4BD89744E7C0806EAF8F382 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		13F454CD193EE803000ABF27 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -365,6 +419,7 @@
 				137050A519457CDA0010C481 /* FriendsViewController.m in Sources */,
 				13F454E1193EE803000ABF27 /* main.m in Sources */,
 				137050DE194BAA100010C481 /* MSCellAccessory.m in Sources */,
+				135EB12A1B3A198A00B647C5 /* FBMissingSymbols.m in Sources */,
 				13F45517193EEDE6000ABF27 /* InboxViewController.m in Sources */,
 				137050B31947CB1C0010C481 /* ImageViewController.m in Sources */,
 				137050DF194BAA100010C481 /* UIView+AccessViewController.m in Sources */,
@@ -483,6 +538,7 @@
 		};
 		13F454FE193EE803000ABF27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BDB820FBC39F1B300626172 /* Pods-Peek.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -503,6 +559,7 @@
 		};
 		13F454FF193EE803000ABF27 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71AA7C4BC955E3A529719D5D /* Pods-Peek.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
