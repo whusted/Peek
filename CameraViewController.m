@@ -47,9 +47,19 @@ UIColor *disclosureColor;
     
     if (self.image == nil && [self.videoFilePath length] == 0) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.allowsEditing = YES;
+        picker.allowsEditing = NO;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.showsCameraControls = NO;
         picker.delegate = self;
+        
+        // Thanks to http://stackoverflow.com/users/1486261/daspianist for the transforms and scales
+        CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
+        picker.cameraViewTransform = translate;
+        
+        CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
+        picker.cameraViewTransform = scale;
+        
+        //TODO: Modularize code and add custom overlay with cancel button and "click anywhere" message
         
         [self presentViewController:picker animated:NO completion:NULL];
     }
