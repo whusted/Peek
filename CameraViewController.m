@@ -46,22 +46,22 @@ UIColor *disclosureColor;
     }];
     
     if (self.image == nil && [self.videoFilePath length] == 0) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.allowsEditing = NO;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        picker.showsCameraControls = NO;
-        picker.delegate = self;
+        self.picker = [[UIImagePickerController alloc] init];
+        self.picker.allowsEditing = NO;
+        self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.picker.showsCameraControls = NO;
+        self.picker.delegate = self;
         
         // Thanks to http://stackoverflow.com/users/1486261/daspianist for the transforms and scales
         CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
-        picker.cameraViewTransform = translate;
+        self.picker.cameraViewTransform = translate;
         
         CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
-        picker.cameraViewTransform = scale;
+        self.picker.cameraViewTransform = scale;
         
         //TODO: Modularize code and add custom overlay with cancel button and "click anywhere" message
         
-        [self presentViewController:picker animated:NO completion:NULL];
+        [self presentViewController:self.picker animated:NO completion:NULL];
     }
 }
 
@@ -125,13 +125,13 @@ UIColor *disclosureColor;
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         // photo
         self.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-        if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        if (self.picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
             UIImageWriteToSavedPhotosAlbum(self.image, nil, nil, nil);
         }
     } else {
         // video
         self.videoFilePath = (NSString *)[[info objectForKey:UIImagePickerControllerMediaURL] path];
-        if (self.imagePicker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        if (self.picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
             if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(self.videoFilePath)) {
                 UISaveVideoAtPathToSavedPhotosAlbum(self.videoFilePath, nil, nil, nil);
             }
@@ -157,7 +157,7 @@ UIColor *disclosureColor;
     if (self.image == nil && [self.videoFilePath length] == 0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Try again" message:@"Please take a video or picture to share" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
-        [self presentViewController:self.imagePicker animated:NO completion:nil];
+        [self presentViewController:self.picker animated:NO completion:nil];
     } else {
         [self uploadMessage];
         [self.tabBarController setSelectedIndex:0];
@@ -165,6 +165,13 @@ UIColor *disclosureColor;
 }
 
 #pragma mark - Helper methods
+
+//-(void)showImagePickerOverlay {
+//    [[NSBundle mainBundle] loadNibNamed:@"CameraOverlay" owner:self options:nil];
+//    self.overlayView.frame = self.picker.cameraOverlayView.frame;
+//    self.picker.cameraOverlayView = self.overlayView;
+//    self.overlayView = nil;
+//}
 
 - (void)uploadMessage {
     NSData *fileData;
