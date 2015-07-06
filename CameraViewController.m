@@ -60,7 +60,7 @@ UIColor *disclosureColor;
         self.picker.cameraViewTransform = scale;
         
         //TODO: Modularize code and add custom overlay with cancel button and "click anywhere" message
-        
+        [self showImagePickerOverlay];
         [self presentViewController:self.picker animated:NO completion:NULL];
     }
 }
@@ -166,12 +166,14 @@ UIColor *disclosureColor;
 
 #pragma mark - Helper methods
 
-//-(void)showImagePickerOverlay {
-//    [[NSBundle mainBundle] loadNibNamed:@"CameraOverlay" owner:self options:nil];
-//    self.overlayView.frame = self.picker.cameraOverlayView.frame;
-//    self.picker.cameraOverlayView = self.overlayView;
-//    self.overlayView = nil;
-//}
+-(void)showImagePickerOverlay {
+    // creating overlayView
+    UIView *overlayView = [[[NSBundle mainBundle] loadNibNamed:@"CameraOverlay" owner:self options:nil] objectAtIndex:0];
+    [overlayView.layer setOpaque:NO];
+    overlayView.opaque = NO;
+    [overlayView setBackgroundColor:[UIColor clearColor]];
+    self.picker.cameraOverlayView = overlayView;
+}
 
 - (void)uploadMessage {
     NSData *fileData;
