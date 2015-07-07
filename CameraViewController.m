@@ -144,8 +144,9 @@ UIColor *disclosureColor;
 
 #pragma mark - Helper methods
 
+// Remove; add GestureRecognizer instead
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"hiiii");
+    NSLog(@"Touch detected");
 }
 
 -(void)initializeImagePicker {
