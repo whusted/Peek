@@ -144,13 +144,12 @@ UIColor *disclosureColor;
 
 #pragma mark - Helper methods
 
-// Remove; add GestureRecognizer instead
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Touch detected");
+    NSLog(@"Please work");
 }
 
 -(void)initializeImagePicker {
-    self.picker = [[UIImagePickerController alloc] init];
+    self.picker = [[CustomCameraViewController alloc] init];
     self.picker.allowsEditing = NO;
     self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     self.picker.showsCameraControls = NO;
@@ -165,17 +164,20 @@ UIColor *disclosureColor;
     
     //TODO: Modularize code and add custom overlay with cancel button and "click anywhere" message
     [self showImagePickerOverlay];
-    [self presentViewController:self.picker animated:NO completion:NULL];
+    [self presentViewController:self.picker animated:NO completion:nil];
 }
 
 -(void)showImagePickerOverlay {
     // creating overlayView
-    UIView *overlayView = [[[NSBundle mainBundle] loadNibNamed:@"CameraOverlay" owner:self options:nil] objectAtIndex:0];
-    [overlayView.layer setOpaque:NO];
-    overlayView.opaque = NO;
-    [overlayView setBackgroundColor:[UIColor clearColor]];
-    overlayView.userInteractionEnabled = YES;
+    UIImageView *overlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera_instructions"]];
+    overlayView.contentMode = UIViewContentModeScaleAspectFit;
+    overlayView.alpha = 0.0f;
     self.picker.cameraOverlayView = overlayView;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDelay:2.2f];
+    overlayView.alpha = 1.0f;
+    [UIView commitAnimations];
 }
 
 - (void)uploadMessage {

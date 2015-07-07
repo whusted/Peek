@@ -17,8 +17,7 @@
 		137050DE194BAA100010C481 /* MSCellAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 137050DB194BAA100010C481 /* MSCellAccessory.m */; };
 		137050DF194BAA100010C481 /* UIView+AccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 137050DD194BAA100010C481 /* UIView+AccessViewController.m */; };
 		137050E2194BB7AA0010C481 /* GravatarUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 137050E0194BB7AA0010C481 /* GravatarUrlBuilder.m */; };
-		13937C6D1B475A38002AE8BF /* CameraOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13937C6C1B475A38002AE8BF /* CameraOverlay.xib */; };
-		13937C701B4B5147002AE8BF /* CameraOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13937C6F1B4B5147002AE8BF /* CameraOverlayView.m */; };
+		13937C731B4C4F40002AE8BF /* CustomCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13937C721B4C4F40002AE8BF /* CustomCameraViewController.m */; };
 		13F2DBFE1B2B5D5200FD4A46 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13F2DBFD1B2B5D5200FD4A46 /* Keys.plist */; };
 		13F454D5193EE803000ABF27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F454D4193EE803000ABF27 /* Foundation.framework */; };
 		13F454D7193EE803000ABF27 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F454D6193EE803000ABF27 /* CoreGraphics.framework */; };
@@ -78,9 +77,8 @@
 		137050DD194BAA100010C481 /* UIView+AccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AccessViewController.m"; sourceTree = "<group>"; };
 		137050E0194BB7AA0010C481 /* GravatarUrlBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GravatarUrlBuilder.m; sourceTree = "<group>"; };
 		137050E1194BB7AA0010C481 /* GravatarUrlBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GravatarUrlBuilder.h; sourceTree = "<group>"; };
-		13937C6C1B475A38002AE8BF /* CameraOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraOverlay.xib; path = /Users/goalsman/Documents/Mobile/Peek/CameraOverlay.xib; sourceTree = "<absolute>"; };
-		13937C6E1B4B5147002AE8BF /* CameraOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraOverlayView.h; sourceTree = "<group>"; };
-		13937C6F1B4B5147002AE8BF /* CameraOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraOverlayView.m; sourceTree = "<group>"; };
+		13937C711B4C4F40002AE8BF /* CustomCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCameraViewController.h; sourceTree = "<group>"; };
+		13937C721B4C4F40002AE8BF /* CustomCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCameraViewController.m; sourceTree = "<group>"; };
 		13F2DBFD1B2B5D5200FD4A46 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		13F454D1193EE803000ABF27 /* Peek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13F454D4193EE803000ABF27 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -219,9 +217,8 @@
 				13F454E4193EE803000ABF27 /* AppDelegate.m */,
 				137050A6194632E90010C481 /* CameraViewController.h */,
 				137050A7194632E90010C481 /* CameraViewController.m */,
-				13937C6C1B475A38002AE8BF /* CameraOverlay.xib */,
-				13937C6E1B4B5147002AE8BF /* CameraOverlayView.h */,
-				13937C6F1B4B5147002AE8BF /* CameraOverlayView.m */,
+				13937C711B4C4F40002AE8BF /* CustomCameraViewController.h */,
+				13937C721B4C4F40002AE8BF /* CustomCameraViewController.m */,
 				137050A0194530060010C481 /* EditFriendsViewController.h */,
 				137050A1194530060010C481 /* EditFriendsViewController.m */,
 				137050A319457CDA0010C481 /* FriendsViewController.h */,
@@ -366,7 +363,6 @@
 			files = (
 				13F2DBFE1B2B5D5200FD4A46 /* Keys.plist in Resources */,
 				13F45504193EE866000ABF27 /* MainStoryboard.storyboard in Resources */,
-				13937C6D1B475A38002AE8BF /* CameraOverlay.xib in Resources */,
 				13F454DF193EE803000ABF27 /* InfoPlist.strings in Resources */,
 				13F454E7193EE803000ABF27 /* Images.xcassets in Resources */,
 			);
@@ -427,9 +423,9 @@
 				137050E2194BB7AA0010C481 /* GravatarUrlBuilder.m in Sources */,
 				137050A519457CDA0010C481 /* FriendsViewController.m in Sources */,
 				13F454E1193EE803000ABF27 /* main.m in Sources */,
-				13937C701B4B5147002AE8BF /* CameraOverlayView.m in Sources */,
 				137050DE194BAA100010C481 /* MSCellAccessory.m in Sources */,
 				135EB12A1B3A198A00B647C5 /* FBMissingSymbols.m in Sources */,
+				13937C731B4C4F40002AE8BF /* CustomCameraViewController.m in Sources */,
 				13F45517193EEDE6000ABF27 /* InboxViewController.m in Sources */,
 				137050B31947CB1C0010C481 /* ImageViewController.m in Sources */,
 				137050DF194BAA100010C481 /* UIView+AccessViewController.m in Sources */,

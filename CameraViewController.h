@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "CustomCameraViewController.h"
 
 @interface CameraViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic, strong) UIImagePickerController *picker;
+@property (nonatomic, strong) CustomCameraViewController *picker;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *videoFilePath;
 @property (nonatomic, strong) NSArray *friends;
