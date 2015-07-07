@@ -20,16 +20,14 @@
 UIColor *disclosureColor;
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.recipients = [[NSMutableArray alloc] init];
     disclosureColor = [UIColor colorWithRed:0.353 green:0.659 blue:0.788 alpha:1];
 
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     self.friendsRelation = [[PFUser currentUser] objectForKey:@"friendsRelation"];
@@ -46,41 +44,23 @@ UIColor *disclosureColor;
     }];
     
     if (self.image == nil && [self.videoFilePath length] == 0) {
-        self.picker = [[UIImagePickerController alloc] init];
-        self.picker.allowsEditing = NO;
-        self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        self.picker.showsCameraControls = NO;
-        self.picker.delegate = self;
-        
-        // Thanks to http://stackoverflow.com/users/1486261/daspianist for the transforms and scales
-        CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
-        self.picker.cameraViewTransform = translate;
-        
-        CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
-        self.picker.cameraViewTransform = scale;
-        
-        //TODO: Modularize code and add custom overlay with cancel button and "click anywhere" message
-        [self showImagePickerOverlay];
-        [self presentViewController:self.picker animated:NO completion:NULL];
+        [self initializeImagePicker];
     }
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [self.friends count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdenitier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdenitier forIndexPath:indexPath];
     
@@ -95,8 +75,7 @@ UIColor *disclosureColor;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
@@ -112,8 +91,7 @@ UIColor *disclosureColor;
 }
 
 #pragma mark - Image Picker Controller Delegate
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:NO completion:nil];
     
     [self.tabBarController setSelectedIndex:0];
@@ -166,12 +144,36 @@ UIColor *disclosureColor;
 
 #pragma mark - Helper methods
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"hiiii");
+}
+
+-(void)initializeImagePicker {
+    self.picker = [[UIImagePickerController alloc] init];
+    self.picker.allowsEditing = NO;
+    self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.picker.showsCameraControls = NO;
+    self.picker.delegate = self;
+    
+    // Thanks to http://stackoverflow.com/users/1486261/daspianist for the transforms and scales
+    CGAffineTransform translate = CGAffineTransformMakeTranslation(0.0, 71.0);
+    self.picker.cameraViewTransform = translate;
+    
+    CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
+    self.picker.cameraViewTransform = scale;
+    
+    //TODO: Modularize code and add custom overlay with cancel button and "click anywhere" message
+    [self showImagePickerOverlay];
+    [self presentViewController:self.picker animated:NO completion:NULL];
+}
+
 -(void)showImagePickerOverlay {
     // creating overlayView
     UIView *overlayView = [[[NSBundle mainBundle] loadNibNamed:@"CameraOverlay" owner:self options:nil] objectAtIndex:0];
     [overlayView.layer setOpaque:NO];
     overlayView.opaque = NO;
     [overlayView setBackgroundColor:[UIColor clearColor]];
+    overlayView.userInteractionEnabled = YES;
     self.picker.cameraOverlayView = overlayView;
 }
 
@@ -220,8 +222,7 @@ UIColor *disclosureColor;
     
 }
 
--(UIImage *)resizeImage:(id)image toWidth:(float)width andHeight:(float)height
-{
+-(UIImage *)resizeImage:(id)image toWidth:(float)width andHeight:(float)height {
     CGSize newSize = CGSizeMake(width, height);
     CGRect newRectangle = CGRectMake(0, 0, width, height);
     UIGraphicsBeginImageContext(newSize);
