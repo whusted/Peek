@@ -144,10 +144,6 @@ UIColor *disclosureColor;
 
 #pragma mark - Helper methods
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Please work");
-}
-
 -(void)initializeImagePicker {
     self.picker = [[CustomCameraViewController alloc] init];
     self.picker.allowsEditing = NO;
@@ -162,7 +158,7 @@ UIColor *disclosureColor;
     CGAffineTransform scale = CGAffineTransformScale(translate, 1.333333, 1.333333);
     self.picker.cameraViewTransform = scale;
     
-    //TODO: Modularize code and add custom overlay with cancel button and "click anywhere" message
+    //TODO: Modularize code and add custom overlay with cancel button
     [self showImagePickerOverlay];
     [self presentViewController:self.picker animated:NO completion:nil];
 }
@@ -171,13 +167,8 @@ UIColor *disclosureColor;
     // creating overlayView
     UIImageView *overlayView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"camera_instructions"]];
     overlayView.contentMode = UIViewContentModeScaleAspectFit;
-    overlayView.alpha = 0.0f;
+    overlayView.alpha = 0.9f;
     self.picker.cameraOverlayView = overlayView;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDelay:2.2f];
-    overlayView.alpha = 1.0f;
-    [UIView commitAnimations];
 }
 
 - (void)uploadMessage {

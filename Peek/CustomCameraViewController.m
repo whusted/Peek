@@ -20,8 +20,7 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Tapped");
-    // TODO: on tap, take picture
+    [self takePicture];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -31,4 +30,12 @@
 -(void) viewDidAppear: (BOOL)animated {
     [super viewDidAppear:animated];
 }
+
+#pragma mark - Helper methods
+
+// TODO: handle swipe to cancel taking a picture
+-(void)handleSwipeFrom {
+    NSLog(@"swiped");
+}
+
 @end
